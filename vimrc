@@ -80,13 +80,13 @@ nnoremap <leader>h :nohlsearch<cr>
 nnoremap <leader>x :close!<cr>
 
 "Resize the window
-nnoremap <leader>el :set columns=220<cr>
+"nnoremap <leader>el :set columns=220<cr>
 
 "Resize the window
-nnoremap <leader>ej :set columns=130<cr>
+"nnoremap <leader>ej :set columns=130<cr>
 
 "Resize the window
-nnoremap <leader>eh :set columns=90<cr>
+"nnoremap <leader>eh :set columns=90<cr>
 
 "Remap ` and ' for marking
 nnoremap ' `
@@ -99,14 +99,14 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
 
 "Move between buffers with arrow keys
-nnoremap <right> :bnext<cr>
-nnoremap <left> :bprev<cr>
+"nnoremap <right> :bnext<cr>
+"nnoremap <left> :bprev<cr>
 
 "A little bit of Emacs-style navigation.
-inoremap <C-a> <home>
-inoremap <C-e> <end>
-nnoremap <C-a> 0
-nnoremap <C-e> $
+"inoremap <C-a> <home>
+"inoremap <C-e> <end>
+"nnoremap <C-a> 0
+"nnoremap <C-e> $
 
 "Simplify omnicompletion
 inoremap <C-space> <C-x><C-o>
@@ -125,7 +125,7 @@ nnoremap <leader>ev :exec ':e! '.g:vim_local.'/vimrc'<cr>
 
 "Display the end of lines and tabs as special characters
 set listchars=tab:>-,trail:+,eol:$
-set list
+"set list
 nnoremap <silent> <leader>s :set nolist!<cr>
 
 "Toggle line numbers
@@ -286,8 +286,8 @@ let g:tex_flavor = "latex"
 syntax on
 
 "Set background to light
-"set background=dark
 colorscheme molokai
+set background=light
 
 if has("gui_running")
     if g:mysys == "mac"
@@ -304,7 +304,7 @@ endif
 set title
 
 "Set # of lines visible around the cursor when scrolling vertically
-set scrolloff=3
+set scrolloff=4
 
 "Turn on Wild Menu
 set wildmenu
@@ -398,14 +398,14 @@ match ExtraWhitespace /\s\+$/
 "highlight OverLength ctermbg=red ctermfg=white guibg=red
 "2match OverLength /\%>80v.\+/
 
-if v:version >= 703
-    "Highlight the column to avoid long lines
-    set colorcolumn=81
-    highlight ColorColumn ctermbg=8 guibg=#222222
-
-    "Show the relative number instead of absolute line number
-    "set relativenumber
-endif
+"if v:version >= 703
+"    "Highlight the column to avoid long lines
+"    set colorcolumn=81
+"    highlight ColorColumn ctermbg=8 guibg=#222222
+"
+"    "Show the relative number instead of absolute line number
+"    "set relativenumber
+"endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
