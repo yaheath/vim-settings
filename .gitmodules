@@ -58,3 +58,6 @@
 	path = bundle/jsx
 	url = https://github.com/mxw/vim-jsx.git
 	branch = master
+[submodule "bundle/papercolor-theme"]
+	path = bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git

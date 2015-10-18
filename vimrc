@@ -251,17 +251,17 @@ if !exists("autocommands_loaded")
     if has("gui_running")
         autocmd GUIEnter * exec 'source '.g:vim_local.'/vimrc'
     endif
-    
+
     "Switch CWD based on current file
     "autocmd BufEnter * lcd %:p:h
-    
+
     "When vimrc is edited, reload it
     autocmd BufWritePost vimrc exec 'source '.g:vim_local.'/vimrc'
-    
+
     "Refresh syntax highlighting when buffer is entered or written
     autocmd BufEnter * syntax sync fromstart
     autocmd BufWritePost * syntax sync fromstart
-    
+
     " Have Vim jump to the last position when reopening a file
     autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal g'\"" | endif
@@ -317,8 +317,9 @@ let g:tex_flavor = "latex"
 "Turn on syntax highlighting
 syntax on
 
-colorscheme molokai
+let g:PaperColor_Light_Override = { 'background' : '#ffffff' }
 set background=light
+colorscheme PaperColor
 
 if has("gui_running")
     if g:mysys == "mac"
@@ -336,7 +337,7 @@ set title
 
 "Highlight the current line and column
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 
 "Set # of lines visible around the cursor when scrolling vertically
 set scrolloff=4
@@ -382,7 +383,7 @@ set infercase
 set smartcase
 
 "Search dynamically
-set incsearch
+"set incsearch
 
 "Highlight search items but turn it off when program starts
 set hlsearch
@@ -416,8 +417,7 @@ set completeopt=menuone,longest,preview
 "Remove a lot of visual effects like scrollbar/menu/tabs from GUI
 set guioptions=a
 
-"Always hide the statusline
-set laststatus=0
+set laststatus=2
 
 "Show as much of the last line as possible
 set display=lastline
