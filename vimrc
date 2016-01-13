@@ -84,8 +84,10 @@ set formatoptions-=t
 set formatoptions+=c
 set formatoptions+=r
 set formatoptions+=q
-" Remove comment leaders when joining lines
-set formatoptions+=j
+if v:version >= 704
+  " Remove comment leaders when joining lines
+  set formatoptions+=j
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings
@@ -364,7 +366,7 @@ set cmdheight=1
 set number
 
 "Do not redraw when running macros .. lazyredraw
-"set lazyredraw
+set lazyredraw
 
 "Change buffer without saving
 set hidden
