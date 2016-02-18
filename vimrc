@@ -191,8 +191,8 @@ vnoremap <silent> # :call VisualSearch("b")<CR>
 " Remap TAB to insert spaces if there is text preceding the cursor
 function! InsertTab()
     if strpart(getline('.'), 0, col('.') - 1) =~ '\S'
-        let num_spaces = &ts - (virtcol('.') - 1) % &ts
-        return repeat(' ', num_spaces)
+        let l:num_spaces = &ts - (virtcol('.') - 1) % &ts
+        return repeat(' ', l:num_spaces)
     else
         return "\<tab>"
     endif
@@ -279,8 +279,10 @@ if !exists("autocommands_loaded")
     autocmd BufEnter * call SetMakeProg()
 
     "Avoid showing whitespace while in insert mode
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd BufEnter,BufRead,BufNewFile,InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * call ExtraWhitespaceInsEnter()
+    autocmd InsertLeave * call ExtraWhitespaceInsLeave()
+    "autocmd BufEnter,BufRead,BufNewFile * call InitExtraWhitespace()
+    autocmd WinEnter * call InitExtraWhitespace()
 
     "Expand tabs
     "autocmd BufEnter,BufNewFile *.c,*.cpp,*.h,*.hpp,*.cxx,*.hxx set expandtab
@@ -430,9 +432,53 @@ set showcmd
 "Show more context when completing ctags
 set showfulltag
 
-"Setup higlighting of whitespace that shouldn't be there
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+function! EnableExtraWhitespace()
+    "Setup higlighting of whitespace that shouldn't be there
+    let w:ew_enabled = 1
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+endfunction
+
+function! DisableExtraWhitespace()
+    let w:ew_enabled = 0
+    match ExtraWhitespace ''
+endfunction
+
+function! ExtraWhitespaceInsEnter()
+    if w:ew_enabled
+        match ExtraWhitespace /\s\+\%#\@<!$/
+    endif
+endfunction
+
+function! ExtraWhitespaceInsLeave()
+    if w:ew_enabled
+        match ExtraWhitespace /\s\+$/
+    endif
+endfunction
+
+function! ToggleExtraWhitespace()
+    "let w:ew_enabled = exists('w:ew_enabled') ? !w:ew_enabled : 0
+    if w:ew_enabled
+        call DisableExtraWhitespace()
+    else
+        call EnableExtraWhitespace()
+    endif
+endfunction
+
+nnoremap <leader>w :call ToggleExtraWhitespace()<cr>
+
+function! InitExtraWhitespace()
+    if !exists('w:ew_enabled')
+        let w:ew_enabled = 1
+    endif
+    if w:ew_enabled
+        call EnableExtraWhitespace()
+    else
+        call DisableExtraWhitespace()
+    endif
+endfunction
+
+call InitExtraWhitespace()
 
 "Setup highlighting of lines longer than 80 characters
 "highlight OverLength ctermbg=red ctermfg=white guibg=red
