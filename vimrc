@@ -299,7 +299,7 @@ if !exists("autocommands_loaded")
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-    autocmd FileType html,css,javascript setlocal sw=2 ts=2
+    autocmd FileType html,css,scss,sass,javascript,htmljinja setlocal sw=2 ts=2
     autocmd FileType yaml setlocal sw=2 ts=2 et
 
     autocmd FileType rst setlocal sw=2 ts=2 et
@@ -538,7 +538,7 @@ call InitExtraWhitespace()
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:syntastic_check_on_open = 1
     let g:syntastic_python_checkers = ['flake8']
-    let g:syntastic_python_flake8_args = '--ignore=E123,E261,E301,E302 --max-line-length=89'
+    let g:syntastic_python_flake8_args = '--ignore=E123,E261,E301,E302,E731 --max-line-length=89'
     let g:syntastic_full_redraws = 1
     "let g:syntastic_enable_signs = 0
 
@@ -546,3 +546,8 @@ call InitExtraWhitespace()
     " => JSX
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:jsx_ext_required = 0
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => JSX
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:csv_no_conceal = 1
