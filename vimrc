@@ -98,6 +98,8 @@ let mapleader = ","
 "Remap the semicolon to save typing colon
 nnoremap ; :
 
+nnoremap <leader><C-l> :redraw!<cr>
+
 "Turn off search highlighting
 nnoremap <leader>h :nohlsearch<cr>
 
