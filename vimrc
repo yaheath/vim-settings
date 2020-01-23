@@ -552,10 +552,10 @@ call InitExtraWhitespace()
     let g:syntastic_python_flake8_args = '--ignore=E123,E261,E301,E302,E305,E306,E731,W503,W504 --max-line-length=89'
     let g:syntastic_full_redraws = 1
     "let g:syntastic_enable_signs = 0
-    let g:syntastic_filetype_map = {
-        \ "javascript.jsx": "javascript" }
+    "let g:syntastic_filetype_map = {
+    "    \ "javascript.jsx": "javascript" }
     let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint --quiet'
+    let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " => JSX
