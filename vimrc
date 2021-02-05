@@ -566,3 +566,10 @@ call InitExtraWhitespace()
     " => CSV
     """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     let g:csv_no_conceal = 1
+
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " => Command-T
+    """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    let g:CommandTSmartCase = 1
+    let g:CommandTFileScanner = 'watchman'
+    let g:CommandTWildIgnore = &wildignore .",*/node_modules,*/build,*/venv,*/env,*/.git/*"
